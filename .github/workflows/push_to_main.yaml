@@ -47,6 +47,22 @@ jobs:
           echo "Image tag is ${image_tag}"
           docker build . --tag ${image_tag}
           docker push ${image_tag}
+
+  my_trial_steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Print hello world
+        run: echo "Hello world"
+      
+      - name: print date
+        run: date
+
+      - name: print working directory
+        run: pwd
     
   update_coverage_report:
     needs: run_tests
